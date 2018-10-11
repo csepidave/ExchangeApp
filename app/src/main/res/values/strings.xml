@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">ExchangeRates</string>
-    <string name="title_latest">Latest rates</string>
+    <string name="title_actual">Actual rates</string>
     <string name="title_historical">Past 7 days</string>
 </resources>

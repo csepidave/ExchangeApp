@@ -2,4 +2,8 @@
     <string name="app_name">ExchangeRates</string>
     <string name="title_actual">Actual rates</string>
     <string name="title_historical">Past 7 days</string>
+    <string name="exit_alert_title">App closing</string>
+    <string name="exit_confirm">Are you sure you want to close the app?</string>
+    <string name="cancel">Cancel</string>
+    <string name="yes">Yes</string>
 </resources>

@@ -8,7 +8,7 @@ import android.widget.TextView
 import exchangerates.com.csepi.exchangerates.R
 import exchangerates.com.csepi.exchangerates.data.model.Rate
 
-class ActualRatesAdapter : RecyclerView.Adapter<ActualRatesAdapter.ActualRatesItemViewHolder>(){
+class ActualRatesAdapter : RecyclerView.Adapter<ActualRatesAdapter.ActualRatesItemViewHolder>() {
 
     private var rates: List<Rate>? = null
 
@@ -33,7 +33,7 @@ class ActualRatesAdapter : RecyclerView.Adapter<ActualRatesAdapter.ActualRatesIt
         }
     }
 
-    inner class ActualRatesItemViewHolder(view: View) : RecyclerView.ViewHolder(view){
+    inner class ActualRatesItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val currency = view.findViewById(R.id.currency) as TextView
         val value = view.findViewById(R.id.value) as TextView
     }

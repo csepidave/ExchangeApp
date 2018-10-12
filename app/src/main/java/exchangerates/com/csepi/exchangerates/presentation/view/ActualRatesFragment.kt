@@ -13,7 +13,7 @@ import exchangerates.com.csepi.exchangerates.presentation.view.adapter.ActualRat
 import exchangerates.com.csepi.exchangerates.presentation.view.interfaces.ActualRatesView
 import kotlinx.android.synthetic.main.fragment_actual_rates.*
 
-class ActualRatesFragment : Fragment(), ActualRatesView{
+class ActualRatesFragment : Fragment(), ActualRatesView {
 
     private val actualRatesPresenter by lazy { ActualRatesPresenter(this) }
     private val actualRatesAdapter by lazy { ActualRatesAdapter() }

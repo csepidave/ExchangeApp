@@ -12,7 +12,7 @@ interface FixerApiService {
     fun getActualRates(
             @Query("access_key") apiKey: String,
             @Query("base") baseCurrency: String,
-            @Query("symbols") currencyCodes: List<String>
+            @Query("symbols") currencyCodes: List<String>?
     ) : Single<ApiResponseModel>
 
     @GET

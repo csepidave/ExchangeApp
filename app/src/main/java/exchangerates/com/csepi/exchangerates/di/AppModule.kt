@@ -1,10 +1,13 @@
 package exchangerates.com.csepi.exchangerates.di
 
+import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import exchangerates.com.csepi.exchangerates.BuildConfig
 import exchangerates.com.csepi.exchangerates.BuildConfig.BASE_URL
+import exchangerates.com.csepi.exchangerates.data.model.Rates
 import exchangerates.com.csepi.exchangerates.data.network.DataManager
+import exchangerates.com.csepi.exchangerates.data.parser.RatesParser
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -36,11 +39,19 @@ class AppModule {
     }
 
     @Provides
-    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
+    fun provideGsonConverterFactory() : GsonConverterFactory {
+        val gson = GsonBuilder()
+                .registerTypeAdapter(Rates::class.java, RatesParser())
+                .create()
+        return GsonConverterFactory.create(gson)
+    }
+
+    @Provides
+    fun provideRetrofit(okHttpClient: OkHttpClient, gsonConverterFactory: GsonConverterFactory): Retrofit {
         return Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(gsonConverterFactory)
                 .client(okHttpClient)
                 .build()
     }

@@ -9,7 +9,8 @@ import javax.inject.Inject
 class DataManager @Inject constructor(retrofit: Retrofit) {
     private val service = retrofit.create<FixerApiService>(FixerApiService::class.java)
 
-    fun requestActualRates(baseCurrency: String, currencyCodes: List<String>) : Single<ApiResponseModel> {
+    fun requestActualRates(baseCurrency: String, currencyCodes: List<String>?)
+            : Single<ApiResponseModel> {
         return service.getActualRates(API_KEY, baseCurrency, currencyCodes)
     }
 

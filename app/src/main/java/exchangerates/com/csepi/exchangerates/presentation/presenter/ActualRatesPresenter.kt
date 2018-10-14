@@ -22,17 +22,19 @@ class ActualRatesPresenter(private val view: ActualRatesFragment?) {
 
     private fun isViewAttached() = view?.isAdded ?: false
 
-    fun getActualRates() {
+    fun getActualRates(baseCurrency: String) {
         if (isViewAttached()) {
-            disposables += dataManager.requestActualRates("EUR", null)
+            disposables += dataManager.requestActualRates(baseCurrency, null)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .doAfterTerminate { view?.stopLoading() }
-                    .subscribe({
+                    .subscribe({ it ->
                         if (it.success) {
                             view?.showExchangeRates(it.rates?.getRates()!!)
                         } else {
-                            view?.showErrorSnackbar()
+                            it.error?.let {
+                                view?.showErrorSnackbar(it.type)
+                            }
                         }
                     }, {
                         view?.showError(it)

@@ -10,5 +10,6 @@ data class ApiResponseModel(
         val historical: Boolean? = null,
         val base: String = String.empty(),
         val date: String = String.empty(),
-        val rates: Rates? = null
+        val rates: Rates? = null,
+        val error: ErrorModel? = null
 ) : Parcelable

@@ -6,4 +6,7 @@
     <string name="exit_confirm">Are you sure you want to close the app?</string>
     <string name="cancel">Cancel</string>
     <string name="yes">Yes</string>
+    <string name="default_error_message">Something went wrong!</string>
+    <string name="try_again_with_default_base_currency">%1$s Please try again with default base currency! (EUR)</string>
+    <string name="retry">Retry</string>
 </resources>
